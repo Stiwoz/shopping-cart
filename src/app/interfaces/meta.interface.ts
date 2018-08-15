@@ -1,4 +1,4 @@
-export class IMetaProps {
+export class IMetaData {
 	public isSelected = false;
 	public isNew = false;
 	public isDeleting = false;

@@ -14,12 +14,12 @@
     "deprecation": {
       "severity": "warn"
     },
-    "eofline": true,
+    "eofline": false,
     "forin": true,
     "import-spacing": true,
     "indent": [
       true,
-      "tabs"
+      "space"
     ],
     "interface-over-type-literal": true,
     "label-position": true,

@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { getInitialState, IAppState } from './app.state';
 import { getRootReducer } from './app.store';
 import { GlobalActions } from './actions';
+import { DbService } from './services/db.service';
 
 @NgModule({
 	declarations: [
@@ -30,6 +31,8 @@ import { GlobalActions } from './actions';
 		SplashScreen,
 
 		GlobalActions,
+
+		DbService,
 
 		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
 	],
