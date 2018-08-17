@@ -8,8 +8,8 @@ import { Action } from 'redux';
  * @prop {any} meta Any metadata that the reducer should be aware of
  */
 export interface IPlabAction extends Action {
-	type: string;
-	error?: boolean;
-	payload?: any;
-	meta?: any;
+  type: string;
+  error?: boolean;
+  payload?: any;
+  meta?: any;
 }
