@@ -26,7 +26,18 @@
     "@ionic/angular": "4.0.0-beta.3",
     "@ionic/ng-toolkit": "1.0.6",
     "@ionic/schematics-angular": "1.0.5",
+    "@ionic/storage": "^2.1.3",
+    "@types/cordova-plugin-device": "^1.1.5",
+    "@types/cordova-plugin-splashscreen": "^4.0.2",
+    "@types/cordova-sqlite-storage": "^1.5.3",
     "@types/redux": "3.6.0",
+    "cordova-android": "7.0.0",
+    "cordova-plugin-device": "2.0.2",
+    "cordova-plugin-ionic-keyboard": "^2.1.2",
+    "cordova-plugin-ionic-webview": "^2.0.3",
+    "cordova-plugin-splashscreen": "^5.0.2",
+    "cordova-plugin-whitelist": "^1.3.3",
+    "cordova-sqlite-storage": "^2.4.0",
     "core-js": "2.5.7",
     "redux": "4.0.0",
     "rxjs": "6.2.2",
@@ -47,5 +58,18 @@
     "tslint": "5.11.0",
     "typescript": "2.9.2"
   },
-  "description": "A Shopping Cart APP - Since there's not a decent one yet"
+  "description": "A Shopping Cart APP - Since there's not a decent one yet",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-sqlite-storage": {}
+    },
+    "platforms": [
+      "android"
+    ]
+  }
 }

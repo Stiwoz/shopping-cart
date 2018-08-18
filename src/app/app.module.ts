@@ -1,7 +1,11 @@
-import { DevToolsExtension, NgRedux, NgReduxModule } from '@angular-redux/store';
+import {
+  DevToolsExtension,
+  NgRedux,
+  NgReduxModule
+} from '@angular-redux/store';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy, RouterModule, Routes } from '@angular/router';
+import { RouteReuseStrategy } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -10,51 +14,47 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { getInitialState, IAppState } from './app.state';
 import { getRootReducer } from './app.store';
-import { GlobalActions } from './actions';
+import { GlobalActions, CartsActions, ItemsActions } from './actions';
 import { DbService } from './services/db.service';
 
 @NgModule({
-	declarations: [
-		AppComponent
-	],
-	entryComponents: [
+  declarations: [AppComponent],
+  entryComponents: [],
+  imports: [
+    BrowserModule,
+    NgReduxModule,
+    IonicModule.forRoot(),
+    AppRoutingModule
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
 
-	],
-	imports: [
-		BrowserModule,
-		NgReduxModule,
-		IonicModule.forRoot(),
-		AppRoutingModule
-	],
-	providers: [
-		StatusBar,
-		SplashScreen,
+    GlobalActions,
+    CartsActions,
+    ItemsActions,
 
-		GlobalActions,
+    DbService,
 
-		DbService,
-
-		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-	],
-	bootstrap: [
-		AppComponent
-	]
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
-	constructor(
-		ngRedux: NgRedux<IAppState>,
-		devTools: DevToolsExtension,
-	) {
-		// Tell @angular-redux/store about our rootReducer and our initial state.
-		// It will use this to create a redux store for us and wire up all the
-		// events.
-		const storeEnhancers = devTools.isEnabled() && environment.production ? [devTools.enhancer()] : [];
+  constructor(ngRedux: NgRedux<IAppState>, devTools: DevToolsExtension) {
+    // Tell @angular-redux/store about our rootReducer and our initial state.
+    // It will use this to create a redux store for us and wire up all the
+    // events.
+    const storeEnhancers =
+      devTools.isEnabled() && !environment.production
+        ? [devTools.enhancer()]
+        : [];
 
-		ngRedux.configureStore(
-			getRootReducer(),
-			getInitialState(),
-			[],
-			storeEnhancers
-		);
-	}
+    ngRedux.configureStore(
+      getRootReducer(),
+      getInitialState(),
+      [],
+      storeEnhancers
+    );
+  }
 }

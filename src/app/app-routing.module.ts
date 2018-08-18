@@ -2,8 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' }
+  { path: '', redirectTo: 'carts-list', pathMatch: 'full' },
+  {
+    path: 'carts-list',
+    loadChildren: './pages/carts/carts.module#CartsPageModule'
+  },
+  {
+    path: 'cart-detail/:cartId',
+    loadChildren: './pages/cart-detail/cart-detail.module#CartDetailPageModule'
+  }
 ];
 
 @NgModule({

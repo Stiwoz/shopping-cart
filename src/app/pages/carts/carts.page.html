@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Shopping Carts
+      <ion-badge *ngIf="carts$ | async as carts">{{carts.length}}</ion-badge>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="carts$ | async as carts else loading" lines="full">
+    <ion-item-sliding *ngFor="let cart of carts">
+      <ion-item (click)="open(cart)" detail>
+        <ion-label>{{cart.id}}</ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="delete(cart)" expandable="true" color="danger">
+          <ion-icon name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+
+<ng-template #loading>
+  <ion-spinner></ion-spinner>
+</ng-template>
